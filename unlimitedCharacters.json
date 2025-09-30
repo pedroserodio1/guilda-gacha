@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Lucao",
+    "rarity": "SSR",
+    "imageUrl": "https://i.imgur.com/5YGOFeB.jpg",
+    "limited": false
+  },
+  {
+    "name": "Serodio",
+    "rarity": "SSR",
+    "imageUrl": "https://i.imgur.com/oj9eI2b.jpeg",
+    "limited": false
+  },
+  {
+    "name": "Bombom",
+    "rarity": "SSR",
+    "imageUrl": "https://i.imgur.com/uBsSQhp.png",
+    "limited": false
+  },
+  {
+    "name": "Pikirito",
+    "rarity": "SSR",
+    "imageUrl": "https://i.imgur.com/IRsdMbX.jpeg",
+    "limited": false
+  },
+  {
+    "name": "Godoi",
+    "rarity": "SR",
+    "imageUrl": "",
+    "limited": false
+  },
+  {
+    
+  }
+]

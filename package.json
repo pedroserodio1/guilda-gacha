@@ -1,0 +1,26 @@
+{
+  "name": "guilda-gacha",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/bootstrap.js",
+    "dev": "nodemon --trace-warnings src/bootstrap.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.1",
+  "dependencies": {
+    "@prisma/client": "^6.16.2",
+    "discord.js": "^14.22.1",
+    "dotenv": "^17.2.2",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.6.0",
+    "prisma": "^6.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
