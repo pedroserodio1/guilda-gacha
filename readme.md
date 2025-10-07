@@ -1,6 +1,6 @@
 # 🎲 Guilda Gacha
 
-Um bot de Discord que simula um sistema **gacha** para sua guilda, permitindo que membros rolem personagens, colecionem, participem de banners especiais e gerenciem seu inventário. Ideal para comunidades que querem se divertir com sorteios, coleções e eventos temáticos!
+Um bot de Discord que simula um sistema **gacha** para sua guilda, permitindo que membros rolem personagens, colecionem, participem de banners especiais, ganhem moedas e gerenciem seu inventário. Ideal para comunidades que querem se divertir com sorteios, coleções e eventos temáticos!
 
 ---
 
@@ -93,13 +93,19 @@ Um bot de Discord que simula um sistema **gacha** para sua guilda, permitindo qu
 
 ## 🔄 Como funciona
 
-1. O usuário usa `/roll` para tentar a sorte em um banner.
+1. O usuário usa `/roll` para tentar a sorte em um banner, gastando moedas.
 2. O bot sorteia um personagem conforme raridade e probabilidade, descontando moedas do usuário.
 3. O personagem é salvo no inventário do jogador.
 4. O usuário pode consultar seu inventário com `/inventory` e ver banners ativos com `/banners`.
 5. Admins podem adicionar personagens e conceder moedas.
 
 ---
+
+## 💰 Monetização
+- Usuários ganham moedas por interação no servidor.
+- Moedas são gastas para rolar personagens em banners.
+- 1 Moeda por mensagem enviada (limitado a 30 segundos).
+- 15 Moeadas a cada 15 minutos completos em call (com limite de 3 vezes ao dia).
 
 ## 📦 Scripts úteis
 
@@ -173,5 +179,4 @@ Para dúvidas, sugestões ou contribuições, entre em contato comigo:
 - Twitter: [@pedroserodio](https://twitter.com/pedroserodio)
 - Instagram: [@pedroserodio](https://www.instagram.com/pedroserodio/)
 - Email: serodiomg@gmail.com
-````
 
