@@ -3,8 +3,9 @@ import { addCoinsCall } from './addCoinsCall.js';
 const activeTimers = new Map(); // key = discordId, value = timeoutId
 
 // tempo de teste (15s)
-const TEMPO_EXECUCAO_MS = 15 * 1000;
-// tempo real (15 min) -> const TEMPO_EXECUCAO_MS = 15 * 60 * 1000;
+//const TEMPO_EXECUCAO_MS = 15 * 1000;
+//tempo real (15 min) ->
+const TEMPO_EXECUCAO_MS = 15 * 60 * 1000;
 
 export function startVoiceTimer(discordId, username, coins) {
   console.log(`[DEBUG] startVoiceTimer recebeu: discordId=${discordId}, username=${username}, coins=${coins}`);
