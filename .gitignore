@@ -4,4 +4,4 @@ node_modules
 
 /generated/prisma
 
-/src/database/dev.db
+prisma\dev.db
