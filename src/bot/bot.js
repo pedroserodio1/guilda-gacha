@@ -8,6 +8,7 @@ import { handleGrantCoinsCommand } from '../commands/grantCoins.js';
 import { handleAddCharacters } from '../commands/addCharacters.js';
 import { addCoins } from '../actions/addCoins.js';
 import { addCoinsCall } from '../actions/addCoinsCall.js';
+import { handleVoiceStateUpdate } from '../helper/handleVoiceStateUpdate.js';
 
 const cooldowns = {};
 const callTime = {}
@@ -61,22 +62,7 @@ client.on('interactionCreate', async (interaction) => {
 });
 
 client.on('voiceStateUpdate', (oldState, newState) => {
-    const member = newState.member; // Usuário que mudou de estado
-
-    // Entrou em um canal de voz
-    if (!oldState.channel && newState.channel) {
-        addCoinsCall(member.id, member.user.id, member.user.username, 30);
-    }
-
-    // Saiu do canal de voz
-    if (oldState.channel && !newState.channel) {
-        console.log(`${member.user.tag} [${member.id}] saiu do canal de voz: ${oldState.channel.name}`);
-    }
-
-    // Mudou de canal de voz
-    if (oldState.channel && newState.channel && oldState.channel.id !== newState.channel.id) {
-        console.log(`${member.user.tag} [${member.id}] mudou do canal ${oldState.channel.name} para ${newState.channel.name}`);
-    }
+    handleVoiceStateUpdate(oldState, newState)
 });
 
 client.on('interactionCreate', async (interaction) => {
