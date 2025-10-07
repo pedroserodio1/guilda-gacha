@@ -5,15 +5,15 @@ export async function handleVoiceStateUpdate(oldState, newState) {
     const userId = member.user.id; // Discord ID real
     const username = member.user.username;
 
-    // entrou
-    if (!oldState.channel && newState.channel) {
-        console.log(`${member.user.tag} entrou em ${newState.channel.name}`);
+    // entrou ou desmutou
+    if ((!oldState.channel && newState.channel) || !newState.selfDeaf) {
         startVoiceTimer(userId, username, 30);
     }
 
-    // saiu
-    if (oldState.channel && !newState.channel) {
-        console.log(`${member.user.tag} saiu de ${oldState.channel.name}`);
+    // saiu ou se mutou
+    if ((oldState.channel && !newState.channel) || newState.selfDeaf) {
         stopVoiceTimer(userId, username);
     }
+
+
 }
