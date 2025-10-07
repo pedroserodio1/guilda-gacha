@@ -8,11 +8,12 @@ datasource db {
 }
 
 model User {
-  id        String      @id @default(cuid())
-  discordId String      @unique
-  coins     Int         @default(0)
-  username  String      @default("")
+  id        String       @id @default(cuid())
+  discordId String       @unique
+  coins     Int          @default(0)
+  username  String       @default("")
   inventory Inventory[]
+  actions   UserAction[]
 }
 
 model Character {
@@ -52,4 +53,12 @@ model BannerCharacter {
   character   Character @relation(fields: [characterId], references: [id])
   characterId String
   rateUp      Boolean   @default(false) // true se o char tem bônus no gacha
+}
+
+model UserAction {
+  id         String   @id @default(cuid())
+  userId     String   @unique
+  user       User     @relation(fields: [userId], references: [id])
+  count      Int      @default(0)
+  lastAction DateTime @default(now())
 }

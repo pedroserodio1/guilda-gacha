@@ -1,5 +1,5 @@
 import { prisma } from '../database/prismaClient.js';
-import { getOrCreateUser } from '../helper/getOrCreateUser.js';
+import { getOrCreateUser } from '../actions/getOrCreateUser.js';
 import { EmbedBuilder } from 'discord.js';
 import moment from 'moment-timezone';
 import 'moment/locale/pt-br.js';

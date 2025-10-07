@@ -1,30 +1,61 @@
 import 'dotenv/config';
 import { Client, GatewayIntentBits } from 'discord.js';
 import { handleRollCommand } from '../commands/roll.js';
-import { handleInventoryCommand } from '../commands/inventory.js';	
+import { handleInventoryCommand } from '../commands/inventory.js';
 import { handleActiveBannersCommand } from '../commands/banners.js';
 import { prisma } from '../database/prismaClient.js';
 import { handleGrantCoinsCommand } from '../commands/grantCoins.js';
 import { handleAddCharacters } from '../commands/addCharacters.js';
+import { addCoins } from '../actions/addCoins.js';
+import { addCoinsCall } from '../actions/addCoinsCall.js';
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates] });
+const cooldowns = {};
+const callTime = {}
+
+const client = new Client({
+    intents:
+        [GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildVoiceStates,
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMessages]
+});
 
 client.once('clientReady', () => {
     console.log(`Bot online como ${client.user.tag}`);
 });
+
+client.on('messageCreate', async (message) => {
+
+    if (message.author.bot) return;
+
+    const userId = message.author.id;
+
+    if (cooldowns[userId]) return
+
+    cooldowns[userId] = true;
+
+    addCoins(message.author.id, message.author.username, 1, message)
+
+
+    setTimeout(() => {
+        delete cooldowns[userId];
+        console.log('o user foi apagado')
+    }, 30 * 1000);
+
+})
 
 client.on('interactionCreate', async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
 
     if (interaction.commandName === 'roll') {
         await handleRollCommand(interaction);
-    }else if (interaction.commandName === 'inventory') {
+    } else if (interaction.commandName === 'inventory') {
         await handleInventoryCommand(interaction);
-    }else if(interaction.commandName === 'banners'){
+    } else if (interaction.commandName === 'banners') {
         await handleActiveBannersCommand(interaction)
-    }else if(interaction.commandName === 'grant-coins'){
+    } else if (interaction.commandName === 'grant-coins') {
         await handleGrantCoinsCommand(interaction)
-    }else if(interaction.commandName === 'adicionar-personagem'){
+    } else if (interaction.commandName === 'adicionar-personagem') {
         await handleAddCharacters(interaction)
     }
 });
@@ -34,7 +65,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
 
     // Entrou em um canal de voz
     if (!oldState.channel && newState.channel) {
-        console.log(`${member.user.tag} [${member.id}] entrou no canal de voz: ${newState.channel.name}`);
+        addCoinsCall(member.id, member.user.id, member.user.username, 30);
     }
 
     // Saiu do canal de voz

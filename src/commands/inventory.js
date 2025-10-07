@@ -1,5 +1,5 @@
 import { prisma } from '../database/prismaClient.js';
-import { getOrCreateUser } from '../helper/getOrCreateUser.js';
+import { getOrCreateUser } from '../actions/getOrCreateUser.js';
 import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType } from 'discord.js';
 
 export async function handleInventoryCommand(interaction) {

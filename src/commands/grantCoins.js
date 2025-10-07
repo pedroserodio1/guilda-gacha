@@ -1,5 +1,5 @@
 import { prisma } from '../database/prismaClient.js';
-import { getOrCreateUser } from '../helper/getOrCreateUser.js';
+import { getOrCreateUser } from '../actions/getOrCreateUser.js';
 import { EmbedBuilder, MessageFlags, InteractionResponseType } from 'discord.js';
 
 export async function handleGrantCoinsCommand(interaction) {
